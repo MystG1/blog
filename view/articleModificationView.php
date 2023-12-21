@@ -9,7 +9,6 @@ ob_start();
             <div class="container">
                 <form action="?page=modifier&article=<?= $_GET['article'] ?>" method="post" class="d-flex flex-column text-center">
 
-                    <!-- Pré-remplissage des champs avec les détails de l'article -->
                     <input type="hidden" name="id" value="<?= $articleDetails['id'] ?>">
 
                     <label for="title" class="titleArticle">Nom de l'article :</label>
