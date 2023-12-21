@@ -3,7 +3,7 @@
 $title = "Mon profil";
 ob_start();
 ?>
-<?php if ($is_admin) { ?>
+ <?php if (isset($_SESSION['connect']) && $_SESSION['connect'] === 1) { ?>
 <section class="p-5 starsBackground">
     <div class="container-md">
         <div class="row justify-content-center">

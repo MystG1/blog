@@ -87,7 +87,7 @@ ob_start();
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                                 <p class="descriptionArticle flex-grow-1 mb-3 mb-md-0"><?php echo $comment['content']; ?></p>
 
-                                <?php if (isset($_SESSION['id']) && $_SESSION['id'] == $comment['user_id'] or ($is_admin)) { ?>
+                                <?php if (isset($_SESSION['id']) && $_SESSION['id'] == $comment['user_id'] ) { ?>
                                     <a href="index.php?page=delete_comment&comment_id=<?php echo $comment['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">
                                         <button class="btn btn-outline-rlblue border border-3 py-2">Supprimer le commentaire</button>
                                     </a>
