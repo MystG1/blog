@@ -1,0 +1,161 @@
+// LES DIMENSIONS ----------------------------------------------------
+.container {
+  width: 500px;
+}
+
+body,
+html,
+section {
+  height: 100%;
+  min-width: 296px;
+}
+
+// LES POLICES ------------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+@font-face {
+  font-family: Aero;
+  src: url(../assets/Aero\ Matics\ Display\ Light.ttf);
+}
+
+.navbar,
+form,
+footer p,
+.titleLog,
+.pixel {
+  font-family: Silkscreen;
+}
+
+.mainTitleArticle,
+.titleArticle,
+.descriptionArticle
+{
+  font-family: Aero;
+}
+
+.sectionFlex {
+  flex: 1 0 auto;
+}
+
+.brArticleView {
+  margin-top: 20px;
+}
+
+.articleSpacing {
+  white-space: pre-wrap;
+  font-family: Roboto;
+  font-size: 22px;
+}
+
+// LES ARTICLES ----------------------------------------------
+.titleArticle {
+  font-size: 30px;
+  padding-left: 20px;
+  color: rgba(195, 211, 221, 255);
+}
+
+.descriptionArticle {
+  font-size: 20px;
+  padding-left: 20px;
+  color: rgba(88, 181, 199, 255);
+
+}
+
+.listArticle {
+  background-color: rgba(22, 68, 107, 255),
+}
+
+.listArticle:hover {
+  background-color: white;
+}
+
+.wform {
+  max-width: 300px;
+  width: auto;
+}
+
+//  LES BACKGROUNDS -----------------------------------------------------
+.starsBackground {
+  background-image: url(../assets/starsBackground.png);
+  background-size: cover;
+}
+
+.inscriptionBackground {
+  background-image: url(../assets/inscriptionBackground.png);
+  background-size: cover;
+}
+// L'ANIMATION DE BORDURE --------------------------------------------------------------------------
+.borderAnimation {
+  --border-size: 1px;
+  --border-angle: 0turn;
+
+  background-image: conic-gradient(from var(--border-angle),
+      #213,
+      #112 50%,
+      #213),
+    conic-gradient(from var(--border-angle), transparent 20%, rgb(190, 23, 223), #f03);
+  background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  animation: bg-spin 5s linear infinite;
+
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+
+// BOOTSTRAP -----------------------------------------------------------------------
+$theme-colors: (
+  'primary' : #c3092e,
+  'purple' : rgb(190, 23, 223),
+  'darkpurple' : rgba(19, 17, 36, 255),
+  'green': rgb(47, 199, 16),
+  'blue': rgba(3, 82, 131, 255),
+  'rlblue' : rgba(146, 169, 187, 255),
+  'rlskyblue':rgba(88, 181, 199, 255),
+  'rlwhite':rgba(195, 211, 221, 255),
+  'rlbg': rgba(15, 52, 76, 255),
+  'articlebg' :rgba(22, 68, 107, 255),
+
+);
+$navbar-dark-color: rgb(190, 23, 223);
+
+$spacer: 1rem;
+$spacers: (
+  6: ($spacer * 6),
+  A :($spacer * 9.13),
+  7: ($spacer * 12),
+  8: ($spacer * 20),
+);
+.w-10 {
+  width: 12%;
+
+}
+.w-17{
+  width: 17%;
+}
+
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+;
+
+@import "../../vendor/node_modules/bootstrap/scss/bootstrap.scss";
