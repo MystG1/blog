@@ -1,6 +1,6 @@
 <?php
 
-$title = "Vous êtes connecté !";
+$title = "Vous êtes connectés !";
 
 ?>
 

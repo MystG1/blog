@@ -54,7 +54,7 @@ ob_start();
                 </div>
 
                 <div class="col-md-11 d-flex flex-column flex-md-row align-items-center">
-                    <textarea style="resize: none" class="descriptionArticle w-100 bg-rlbg rounded mb-2 mb-md-0 me-md-3" maxlength="480" type="text" id="content" name="content" rows="4" placeholder="Ecris ton commentaire ici ..."></textarea>
+                    <textarea style="resize: none" class="descriptionArticle w-100 bg-rlbg rounded mb-2 mb-md-0 me-md-3" maxlength="480" type="text" id="content" name="content" rows="4" placeholder="Ecrire un commentaire ..."></textarea>
                     <input class="mx-auto h-50 p-3" type="submit" value="Envoyer le commentaire">
                 </div>
             </form>

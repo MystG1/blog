@@ -19,69 +19,14 @@ try {
             registered();
         } else if ($_GET['page'] == 'connected') {
             connected();
-        }else if ($_GET['page']=='commentSuccess') {
-            
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['content'])) {
-                $content = htmlspecialchars($_POST['content']);
-                $user_id = $_SESSION['id'];
-
-                $commentCreation = new CommentCreationManager();
-                $result = $commentCreation->commentContent($content, $user_id);
-        
-                if ($result === false) {
-                    throw new Exception("Impossible de modifier l'avatar pour le moment.");
-                } else {
-                    if (isset($_SESSION['last_article_id'])) {
-                        $last_article_id = $_SESSION['last_article_id'];
-                        header('Location: index.php?page=article&article=' . $last_article_id .'#comments');
-                        exit();
-                    } else {
-                        commentSuccess();
-                        exit();
-                    }
-                }
-            } }else if ($_GET['page'] == 'delete_comment') {
-                if (isset($_GET['comment_id'])) {
-                    // Vérifier si l'utilisateur est connecté
-                    if (isset($_SESSION['id'])) {
-                        $comment_id = htmlspecialchars($_GET['comment_id']);
-                        $user_id = $_SESSION['id'];
-            
-                        $commentDeletion = new CommentCreationManager();
-                        $result = $commentDeletion->deleteComment($comment_id, $user_id);
-            
-                        if ($result === false) {
-                            header('Location: ?page=errorView');
-                            exit();
-                        } else {
-                            if (isset($_SESSION['last_article_id'])) {
-                                $last_article_id = $_SESSION['last_article_id'];
-                                header('Location: index.php?page=article&article=' . $last_article_id .'#comments');
-                                exit();
-                            } else {
-                                header('Location: ?page=errorView'); 
-                                exit();
-                            }
-                        }
-                    } else {
-                        header('Location: ?page=connexion');
-                        exit();
-                    }
-                } else {
-                    header('Location: ?page=errorView');
-                    exit();
-                }
-            }
-            
-            
-        else if ($_GET['page'] == 'profil') {
+        } else if ($_GET['page'] == 'profil') {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['avatar'])) {
                 $avatar = htmlspecialchars($_POST['avatar']);
                 $pseudo = $_SESSION['pseudo'];
-        
+
                 $avatarModification = new AvatarModificationManager();
                 $result = $avatarModification->updateAvatar($pseudo, $avatar);
-        
+
                 if ($result === false) {
                     throw new Exception("Impossible de modifier l'avatar pour le moment.");
                 } else {
@@ -92,8 +37,7 @@ try {
             } else {
                 profil();
             }
-        }
-         else if ($_GET['page'] == 'connexion') {
+        } else if ($_GET['page'] == 'connexion') {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                     userConnexion(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['password']));
@@ -109,38 +53,35 @@ try {
 
             // LES ARTICLES ----------------------------------------------------------------------------------------------------------
         } else if ($_GET['page'] == 'articles') {
-            
+
             articlesMenu();
-        }
-        else if ($_GET['page'] == 'créer_un_article') {
+        } else if ($_GET['page'] == 'créer_un_article') {
 
             if (!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])) {
                 articleCreation(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['subtitle']), htmlspecialchars($_POST['content']));
             } else {
                 creationPage();
             }
-        }// ...
-else if ($_GET['page'] == 'delete_article') {
-    if (isset($_GET['numArticle'])) {
-        $article_id = $_GET['numArticle'];
-        $articleManager = new ArticleListManager();
-        
-        try {
-            $articleManager->deleteArticle($article_id);
+        } // ...
+        else if ($_GET['page'] == 'delete_article') {
+            if (isset($_GET['numArticle'])) {
+                $article_id = $_GET['numArticle'];
+                $articleManager = new ArticleListManager();
 
-            header('Location: ?page=articles');
-            exit();
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            require('view/errorView.php');
-        }
-    } else {
-        header('Location: ?page=errorView');
-        exit();
-    }
-}
- 
-        else if ($_GET['page'] == 'modifier') {
+                try {
+                    $articleManager->deleteArticle($article_id);
+
+                    header('Location: ?page=articles');
+                    exit();
+                } catch (Exception $e) {
+                    $error = $e->getMessage();
+                    require('view/errorView.php');
+                }
+            } else {
+                header('Location: ?page=errorView');
+                exit();
+            }
+        } else if ($_GET['page'] == 'modifier') {
             if (!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])) {
                 $articleModification = new ArticleModificationManager();
                 $result = $articleModification->modifyArticle($_GET['article'], htmlspecialchars($_POST['title']), htmlspecialchars($_POST['subtitle']), htmlspecialchars($_POST['content']));
@@ -158,6 +99,58 @@ else if ($_GET['page'] == 'delete_article') {
         } else if ($_GET['page'] == 'article') {
             $articleDetails = articleContenu();
             require('view/articleView.php');
+        } else if ($_GET['page'] == 'commentSuccess') {
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['content'])) {
+                $content = htmlspecialchars($_POST['content']);
+                $user_id = $_SESSION['id'];
+
+                $commentCreation = new CommentCreationManager();
+                $result = $commentCreation->commentContent($content, $user_id);
+
+                if ($result === false) {
+                    throw new Exception("Impossible de modifier l'avatar pour le moment.");
+                } else {
+                    if (isset($_SESSION['last_article_id'])) {
+                        $last_article_id = $_SESSION['last_article_id'];
+                        header('Location: index.php?page=article&article=' . $last_article_id . '#comments');
+                        exit();
+                    } else {
+                        commentSuccess();
+                        exit();
+                    }
+                }
+            }
+        } else if ($_GET['page'] == 'delete_comment') {
+            if (isset($_GET['comment_id'])) {
+                if (isset($_SESSION['id'])) {
+                    $comment_id = htmlspecialchars($_GET['comment_id']);
+                    $user_id = $_SESSION['id'];
+
+                    $commentDeletion = new CommentCreationManager();
+                    $result = $commentDeletion->deleteComment($comment_id, $user_id);
+
+                    if ($result === false) {
+                        header('Location: ?page=errorView');
+                        exit();
+                    } else {
+                        if (isset($_SESSION['last_article_id'])) {
+                            $last_article_id = $_SESSION['last_article_id'];
+                            header('Location: index.php?page=article&article=' . $last_article_id . '#comments');
+                            exit();
+                        } else {
+                            header('Location: ?page=errorView');
+                            exit();
+                        }
+                    }
+                } else {
+                    header('Location: ?page=connexion');
+                    exit();
+                }
+            } else {
+                header('Location: ?page=errorView');
+                exit();
+            }
         } else {
             throw new Exception("Cette page n'existe pas");
         }
