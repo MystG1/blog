@@ -13,7 +13,7 @@ ob_start();
                 <div class="border-bottom border-2 border-white my-3 d-flex align-items-center">
                     <h1 class="mainTitleArticle text-rlblue flex-grow-1">les articles</h1>
                     <?php if ($is_admin) { ?>
-                        <a href="?page=cr%C3%A9er_un_article">créer un article</a>
+                        <button id="actionButton" class="p-2 bg-rlbg border border-rlwhite border-2 rounded"><a class="text-decoration-none text-rlblue"href="?page=cr%C3%A9er_un_article">créer un article</a></button>
                     <?php } ?>
                 </div>
 

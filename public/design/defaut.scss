@@ -86,7 +86,7 @@ footer p,
   background-image: url(../assets/inscriptionBackground.png);
   background-size: cover;
 }
-// L'ANIMATION DE BORDURE --------------------------------------------------------------------------
+// L'ANIMATION DE BORDURE ET BOUTTONS--------------------------------------------------------------------------
 .borderAnimation {
   --border-size: 1px;
   --border-angle: 0turn;
@@ -116,8 +116,6 @@ footer p,
   inherits: true;
   initial-value: 0turn;
 }
-
-
 // BOOTSTRAP -----------------------------------------------------------------------
 $theme-colors: (
   'primary' : #c3092e,

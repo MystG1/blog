@@ -10,10 +10,10 @@ ob_start();
     <section class="py-3 px-6 starsBackground">
         <?php if ($is_admin) { ?>
             <div class="dropdown py-1">
-                <button class="border border-purple text-blue bg-darkpurple btn btn-secondary dropdown-toggle nav-link px-4 my-auto" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <button id="actionButton" class="p-2 bg-rlbg border border-rlwhite border-2 rounded text-rlblue btn btn-secondary dropdown-toggle nav-link px-4 my-auto" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     Action
                 </button>
-                <ul class="dropdown-menu text-center bg-darkpurple bg-opacity-75 border border-2 rounded border-purple " aria-labelledby="dropdownMenuButton">
+                <ul class="dropdown-menu text-center bg-rlbg bg-opacity-75 border border-2 rounded border-rlwhite " aria-labelledby="dropdownMenuButton">
 
                     <li class="my-2"><a href='index.php?page=modifier&article=<?= $articleDetails['id'] ?>'>Modifier</a></li>
                     <li><a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')" href='?page=delete_article&numArticle=<?= $articleDetails['id'] ?>'>Supprimer</a></li>
@@ -21,15 +21,15 @@ ob_start();
                 </ul>
             </div>
         <?php } ?>
-        <div class="w-100 h-auto p-3 border bg-darkpurple border-2 border-purple d-flex rounded">
+        <div class="w-100 h-auto p-3 border bg-rlbg border-2 border-blue d-flex rounded">
             <?php if ($articleDetails) { ?>
                 <div class='d-flex flex-column text-center'>
 
                 </div>
 
                 <div class='border-bottom border-2 border-white my-auto text-center w-100'>
-                    <h1 class='mainTitleArticle text-blue flex-grow-1 border-bottom border-top py-3 '><?= $articleDetails['title'] ?></h1><br>
-                    <p class='h5 text-blue border-bottom border-top  border-blue py-3'><?= $articleDetails['subtitle'] ?></p><br>
+                    <h1 class='mainTitleArticle text-rlwhite flex-grow-1 border-bottom border-top py-3 '><?= $articleDetails['title'] ?></h1><br>
+                    <p class='h5 text-rlskyblue border-bottom border-top  border-blue py-3'><?= $articleDetails['subtitle'] ?></p><br>
                     <p class='text-white text-opacity-75  articleSpacing  '><?= $articleDetails['content'] ?></p>
                 </div>
             <?php } else { ?>
