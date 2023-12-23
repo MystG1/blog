@@ -116,6 +116,11 @@ footer p,
   inherits: true;
   initial-value: 0turn;
 }
+
+.avatarSelected {
+  border: 2px solid red;
+}
+
 // BOOTSTRAP -----------------------------------------------------------------------
 $theme-colors: (
   'primary' : #c3092e,

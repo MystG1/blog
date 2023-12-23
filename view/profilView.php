@@ -29,14 +29,14 @@ ob_start();
             $avatarPath = "../public/assets/avatar" . $i . ".png";
         ?>
             <label for="avatar<?php echo $i; ?>" class="mx-4">
-                <input type="radio" id="avatar<?php echo $i; ?>" name="avatar" value="<?php echo $i; ?>"><br>
-                <img src="<?php echo $avatarPath; ?>" alt="Avatar <?php echo $i; ?>" class="w-75">
+                <input style="display: none" type="radio" id="avatar<?php echo $i; ?>" name="avatar" value="<?php echo $i; ?>"><br>
+                <img src="<?php echo $avatarPath; ?>" alt="Avatar <?php echo $i; ?>" class=" avatarImage">
             </label>
         <?php
         }
         ?>
 
-        <input type="submit" value="Modifier" class="btn btn-outline-primary my-1 h-25 ">
+        <input type="submit" value="Modifier" class="btn btn-outline-primary m-4 h-25">
     </form>
 </section>
 

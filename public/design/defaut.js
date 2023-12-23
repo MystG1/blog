@@ -28,5 +28,15 @@ listArticles.forEach(listItem => {
         }
     });
 });
+const avatarImages = document.querySelectorAll('.avatarImage');
+function toggleBorder() {
+    avatarImages.forEach(image => {
+        image.classList.remove('avatarSelected');
+    });
+    this.classList.add('avatarSelected');
+}
+avatarImages.forEach(image => {
+    image.addEventListener('click', toggleBorder);
+});
 
 
